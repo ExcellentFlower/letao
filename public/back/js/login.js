@@ -3,7 +3,6 @@
  */
 //使用表单校验插件
 $(function () {
-
     $('#form').bootstrapValidator({
         //2. 指定校验时的图标显示，默认是bootstrap风格
         feedbackIcons: {
