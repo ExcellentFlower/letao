@@ -138,14 +138,16 @@ var addPic = function (picName, picAddr, id) {
     })
 }
 router.post("/addProduct", function (req, res) {
-
+    if (!req.body.picArr) {
+        return res.send({"error": 403, "message": "请上传图片"});
+    }
     var product = new Product({
         proName: req.body.proName ? req.body.proName : '',
         oldPrice: req.body.oldPrice ? parseFloat(req.body.oldPrice) : '',
         price: req.body.price ? parseFloat(req.body.price) : '',
         proDesc: req.body.proDesc ? req.body.proDesc : '',
         size: req.body.size ? req.body.size : '',
-        statu: req.body.statu ? parseInt(req.body.statu) : '1',
+        statu: req.body.statu ? parseInt(req.body.statu) : 1,
         updateTime: moment().format("YYYY-MM-DD HH:mm:ss"),
         num: req.body.num ? parseInt(req.body.num) : '',
         brandId: req.body.brandId ? parseInt(req.body.brandId) : ''
@@ -153,14 +155,11 @@ router.post("/addProduct", function (req, res) {
     Product.addProduct(product, function (err, data) {
         if (err) return res.send({"error": 403, "message": "数据库异常！"});
 
-        if (req.body.picName1 && req.body.picAddr1) {
-            addPic(req.body.picName1, req.body.picAddr1, data.insertId);
-        }
-        if (req.body.picName2 && req.body.picAddr2) {
-            addPic(req.body.picName2, req.body.picAddr2, data.insertId);
-        }
-        if (req.body.picName3 && req.body.picAddr3) {
-            addPic(req.body.picName3, req.body.picAddr3, data.insertId);
+        if (req.body.picArr) {
+            var arr = JSON.parse( req.body.picArr );
+            arr.forEach(function( v, i ) {
+                addPic(v.picName, v.picAddr, data.insertId);
+            })
         }
         res.send({"success": true});
     })

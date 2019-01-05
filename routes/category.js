@@ -105,12 +105,11 @@ router.post("/addSecondCategoryPic", function (req, res) {
 });
 router.post("/addSecondCategory", checkRootLogin)
 router.post("/addSecondCategory", function (req, res) {
-
     var brand = new Brand({
         brandName: req.body.brandName ? req.body.brandName : '',
         categoryId: req.body.categoryId ? parseInt(req.body.categoryId) : '',
         isDelete: req.body.isDelete ? parseInt(req.body.isDelete) : '',
-        hot: req.body.hot ? parseInt(req.body.hot) : '',
+        hot: req.body.hot ? parseInt(req.body.hot) : 1,
         brandLogo: req.body.brandLogo ? req.body.brandLogo : ''
     })
     Brand.addSecondCategory(brand, function (err, data) {

@@ -70,6 +70,7 @@
   height: 690px;
   transition: all 1s;
   background-color: #fff;
+  font-size: 14px;
 }
 .main ol {
   margin-top: 20px;
@@ -110,4 +111,7 @@ a:active {
 }
 .modal-body {
   color: #A94442;
+}
+.mb_20 {
+  margin-bottom: 20px;
 }
