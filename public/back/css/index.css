@@ -1,0 +1,9 @@
+.main .container-fluid {
+  padding: 0 15px;
+  margin: 0 auto;
+}
+.main .container-fluid .echarts_1,
+.main .container-fluid .echarts_2 {
+  width: 48%;
+  height: 400px;
+}
