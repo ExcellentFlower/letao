@@ -103,6 +103,12 @@
 .main .breadcrumb a {
   color: #337ab7;
 }
+.main .table tbody td {
+  vertical-align: middle;
+}
+.main .table tbody td img {
+  margin: 0 auto;
+}
 a:hover,
 a:visited,
 a:link,
@@ -114,4 +120,10 @@ a:active {
 }
 .mb_20 {
   margin-bottom: 20px;
+}
+.modal-header .modal-title {
+  font-size: 16px;
+}
+img {
+  width: auto;
 }
